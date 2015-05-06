@@ -1,0 +1,19 @@
+<md-toolbar ng-controller="HeaderController">
+    <div class="md-toolbar-tools">
+        <md-button ng-click="toggleLeftBar()" class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
+        </md-button>
+        <h1 class="md-display-3">
+      <span>Complete me !</span>
+    </h1>
+        <ul class="">
+            <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
+            <li ng-show="isLoggedIn()"><p class="navbar-text">Welcome {{ getCurrentUser().name }}</p> </li>
+            <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
+        </ul>
+        <span flex></span>
+        <md-button ng-href="https://github.com/jagonteam/complete-me" target="_blank" class="md-icon-button" aria-label="Github">
+            <img src="assets/icons/github.png" alt="" />
+        </md-button>
+    </div>
+</md-toolbar>

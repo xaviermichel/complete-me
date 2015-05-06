@@ -6,10 +6,18 @@ Vagrant.configure(2) do |config|
 		config.proxy.https     = "http://proxy.priv.atos.fr:3128/"
 		config.proxy.no_proxy  = "localhost,127.0.0.1"
 	end
-
+        
+	config.vm.provider :virtualbox do |vb|
+        	vb.customize ["modifyvm", :id, "--name"  , "complete-me-dev-vm"]
+        	vb.customize ["modifyvm", :id, "--memory", "2048"]
+        	vb.customize ["modifyvm", :id, "--cpus"  , 2]
+        	#vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+	end
+	
 	config.vm.box = "ubuntu/trusty64"
-	config.vm.provision :shell, :privileged => true,  :path => "bootstrap_root.sh"
-	config.vm.provision :shell, :privileged => false, :path => "bootstrap_user.sh"
+	#config.vm.provision :shell, :privileged => true,  :path => "bootstrap_root.sh"
+	#config.vm.provision :shell, :privileged => false, :path => "bootstrap_user.sh"
+
 
 	# nodejs NAT
 	config.vm.network "forwarded_port", guest: 9000, host: 9000

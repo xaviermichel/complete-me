@@ -15,7 +15,11 @@ var express = require('express'),
     config = require('./environment'),
     auth = require('http-auth'),
     fs = require('fs'),
-    logger = require('../utils/logger');
+    logger = require('../utils/logger'),
+    passport = require('passport'),
+    session = require('express-session'),
+    mongoStore = require('connect-mongo')(session),
+    mongoose = require('mongoose');
 
 // transpiled dependencies
 var game = require('../../build/api/game/game'),
@@ -34,6 +38,16 @@ module.exports = function(app, socketio) {
     app.use(bodyParser.json());
     app.use(methodOverride());
     app.use(cookieParser());
+    app.use(passport.initialize());
+
+    // Persist sessions with mongoStore
+    // We need to enable sessions for passport twitter because its an oauth 1.0 strategy
+    app.use(session({
+        secret: config.secrets.session,
+        resave: true,
+        saveUninitialized: true,
+        store: new mongoStore({ mongooseConnection: mongoose.connection })
+    }));
 
     app.set('appPath', path.join(config.root, 'client'));
     app.use(express.static(app.get('appPath')));
@@ -48,7 +62,7 @@ module.exports = function(app, socketio) {
         app.use(errorHandler({ dumpExceptions: true, showStack: true }))
     }
 
-    // Start the game !
+    // Start the quiz !
     // ----------------
     new game.Game(socketio.sockets);
     var administrationArea = new admin.Administration();
