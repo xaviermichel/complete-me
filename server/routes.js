@@ -8,6 +8,9 @@ var errors = require('./components/errors');
 
 module.exports = function(app) {
 
+    app.use('/auth', require('./auth'));
+    app.use('/api/users', require('./api/user'));
+
     // All undefined asset or api routes should return a 404
     app.route('/:url(api|auth|components|app|bower_components|client)/*')
         .get(errors[404]);

@@ -3,8 +3,12 @@
   "dependencies": {
     "jquery": "~1.11.2",
     "angular": "~1.3.8",
-    "angular-route": "~1.3.8",
     "angular-resource": "~1.3.8",
-    "angular-material": "~0.8.3"
+    "angular-material": "~0.8.3",
+    "angular-cookies": ">=1.2.*",
+    "angular-sanitize": ">=1.2.*",
+    "angular-socket-io": "*",
+    "angular-ui-router": "*",
+    "socket.io-client": "~1.3.5"
   }
 }

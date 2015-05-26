@@ -1,3 +1,9 @@
+<!-- Header Bar -->
+<div ng-include="'components/header/header.html'"></div>
+
+<!-- Left Bar -->
+<div ng-include="'components/left-bar/left-bar.html'"></div>
+
 <div ng-controller="QuizController">
     <h2>
         <span ng-if="question.questionIndex">[{{question.questionIndex}}/{{question.questionCount}}]&nbsp;</span>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" ng-app="completeMe">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -7,42 +7,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <base href="/">
     <title>Complete me !</title>
 
-    <link rel="stylesheet" href="/inc/angular-material/angular-material.min.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/left-bar.css">
+    <!-- CSS sheets -->
+    <link rel="stylesheet" href="inc/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="components/left-bar/left-bar.css">
 
-    <script src="/inc/jquery/dist/jquery.min.js"></script>
-    <script src="/inc/angular/angular.min.js"></script>
-    <script src="/inc/angular-route/angular-route.min.js"></script>
-    <script src="/inc/angular-resource/angular-resource.min.js"></script>
-
-    <script src="/inc/angular-animate/angular-animate.min.js"></script>
-    <script src="/inc/angular-aria/angular-aria.min.js"></script>
-    <script src="/inc/angular-material/angular-material.min.js"></script>
-
-    <script src="/socket.io/socket.io.js"></script>
-
-    <script src="/js/application.js"></script>
-
-    <script src="/js/controller.header.js"></script>
-    <script src="/js/controller.leftbar.js"></script>
-    <script src="/js/controller.login.js"></script>
-    <script src="/js/controller.quiz.js"></script>
 </head>
 
-<body role="document">
+<body ng-app="completeMe">
 
-    <!-- Header Bar -->
-    <div ng-include="'html/header.html'"></div>
+    <div ui-view=""></div>
 
-    <!-- Left side Bar -->
-    <div ng-include="'html/left-bar.html'"></div>
+    <!-- Bower dependencies -->
+    <script src="inc/jquery/dist/jquery.min.js"></script>
+    <script src="inc/angular/angular.min.js"></script>
+    <script src="inc/angular-resource/angular-resource.min.js"></script>
+    <script src="inc/angular-animate/angular-animate.min.js"></script>
+    <script src="inc/angular-aria/angular-aria.min.js"></script>
+    <script src="inc/angular-material/angular-material.min.js"></script>
+    <script src="inc/angular-cookies/angular-cookies.js"></script>
+    <script src="inc/angular-sanitize/angular-sanitize.js"></script>
+    <script src="inc/angular-socket-io/socket.js"></script>
+    <script src="inc/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="inc/socket.io-client/socket.io.js"></script>
 
-    <!-- Login view -->
-    <div ng-view="login"></div>
-
+    <!-- App JS -->
+    <script src="app/application.js"></script>
+        <!-- Components -->
+        <script src="components/auth/auth.service.js"></script>
+        <script src="components/auth/user.service.js"></script>
+        <script src="components/header/header.controller.js"></script>
+        <script src="components/left-bar/leftbar.controller.js"></script>
+        <!-- Account -->
+        <script src="app/account/account.js"></script>
+        <script src="app/account/login/login.controller.js"></script>
+        <!-- Main -->
+        <script src="app/main/main.js"></script>
+        <script src="app/main/main.controller.js"></script>
+        <!-- Quizz -->
+        <script src="app/quiz/quiz.js"></script>
+        <script src="app/quiz/quiz.controller.js"></script>
 </body>
 </html>

@@ -71,7 +71,7 @@ export class Game {
     }
 
     /**
-     * Handle game phases
+     * Handle quiz phases
      */
     runGame() {
         // This is the action to do after launching current phase.
@@ -221,7 +221,7 @@ export class Game {
      * called when some websocket connect
      */
     addSocket(socket) {
-        logger.info("user joined the game");
+        logger.info("user joined the quiz");
 
         // tell everyone that someone joined !
         this.sockets.emit('user:join', {});

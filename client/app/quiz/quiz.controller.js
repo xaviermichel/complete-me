@@ -28,7 +28,7 @@ angular
          * Triggered when the server tell someone join
          */
         socket.on('user:join', function(user) {
-            console.info("some user has join the game");
+            console.info("some user has join the quiz");
         });
 
         /*

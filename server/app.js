@@ -8,7 +8,12 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express'),
     config = require('./config/environment'),
-    logger = require('./utils/logger');
+    logger = require('./utils/logger'),
+    mongoose = require('mongoose'),
+    newrelic = require('newrelic');
+
+// Connect to database
+mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // Launch server
 // -------------
